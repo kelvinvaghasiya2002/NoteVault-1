@@ -1,22 +1,41 @@
 .Navigation{
     display: flex;
-    /* gap: 800px; */
     background-color: beige;
     height: 80px;
-    padding-left: 10%;
+    padding-left: 5%;
     align-items: center;
 }
 
 .Titlename{
     color: blue;
     display: block;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
 }
 
 .mainlogin{
     display: flex;
     margin-left: auto;
-    margin-right: 10%;
+    margin-right: 8%;
     align-items: center;
-    gap: 15px;
+    gap: 20%;
+}
+
+.login{
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ragi_button{
+    border-radius: 50px;
+    background-color: blue;
+    font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }

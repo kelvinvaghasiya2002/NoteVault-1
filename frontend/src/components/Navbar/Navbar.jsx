@@ -9,10 +9,10 @@ export default function Navbar(){
             
             <div className='mainlogin'>
                 <div>
-                    <a>Login</a>
+                    <a href='#' className='login'>Login</a>
                 </div>
                 <div>
-                    <button>Ragistion</button>
+                    <button className='ragi_button'>Ragistion</button>
                 </div>
             </div>
         </div>
