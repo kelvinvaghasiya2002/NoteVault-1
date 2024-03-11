@@ -1,5 +1,7 @@
-
+import Navbar from "./Navbar/Navbar"
 
 export default function App() {
-    return <h1>Hello World</h1>
+    return (
+        <Navbar/>
+    )
 }

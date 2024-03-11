@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  background-color: #202124;
+}
+
+.Navigation {
+  display: flex;
+  color: #FFFFFFDE;
+  background-color: #202124;
+  height: 12vh;
+  padding-left: 5%;
+  align-items: center;
+  border-bottom: 0.5px solid #F1F3F43D;
+}
+
+.Titlename {
+  display: block;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.mainlogin {
+  display: flex;
+
+  font-family: "Josefin Sans", sans-serif;
+  /* color: #FFFFFFDE; */
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+
+
+  margin-left: auto;
+  margin-right: 8%;
+  align-items: center;
+  gap: 20%;
+}
+
+.login {
+  text-decoration: none;
+  /* font-optical-sizing: auto; */
+  color: #FFFFFFDE;
+  /* font-size: 15px; */
+  /* font-weight: 600;
+  font-style: normal; */
+}
+
+.ragi_button {
+  border-radius: 34px;
+  cursor: pointer;
+  padding: 10px 24px;
+  font-size: 15px;
+  border: 2px solid #FFFFFFDE;
+  color: #FFFFFFDE;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  background-color: transparent;
+  font-weight: 600;
+}
