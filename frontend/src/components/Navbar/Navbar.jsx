@@ -12,7 +12,7 @@ export default function Navbar(){
                     <a href='#' className='login'>Login</a>
                 </div>
                 <div>
-                    <button className='ragi_button'>Ragistion</button>
+                    <button className='ragi_button'>Registration</button>
                 </div>
             </div>
         </div>
