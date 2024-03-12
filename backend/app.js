@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import 'dotenv/config'
 
-
+const jwt_secret = "Kelvin@147"
 const app = express();
 app.use(cors());
 
@@ -22,6 +22,21 @@ mongoose.connect("mongodb://127.0.0.1:27017/NoteVaultDB")
 })
 .catch((error)=>{
     console.log(error);
+})
+
+
+app.post("/api/auth", (req, res) => {
+    try {
+        const a = jwt.verify(req.query.token, jwt_secret);
+        User.findOne({id:a.id}).then((result)=>{
+            res.json({ token: result, login: true , status: true })
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+    } catch (err) {
+        res.json({ login: false , status :  false})
+    }
 })
 
 
@@ -41,9 +56,15 @@ app.get("/sign-in",(req,res)=>{
                 }else{
                     if(response){
 
+                        const token = jwt.sign({
+                            username: email,
+                            id:result.id
+                        }, jwt_secret)
+
                         res.json({
                             status : response,
-                            data : result
+                            data : result,
+                            token : token
                         })
 
                     }else{
@@ -89,9 +110,16 @@ app.get("/sign-up",(req,res)=>{
                 password : hash
             })
             user.save();
+
+            const token = jwt.sign({
+                username: email,
+                id:newId
+            }, jwt_secret)
+
             res.json({
                 status : true,
-                data : user
+                data : user,
+                token : token
             })
         }
     })
