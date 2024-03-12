@@ -1,7 +1,11 @@
 import Navbar from "./Navbar/Navbar"
+import Note from "./Note/Note"
 
 export default function App() {
     return (
-        <Navbar/>
+        <div>
+            <Navbar/>
+            {/* <Note/> */}
+        </div>
     )
 }
