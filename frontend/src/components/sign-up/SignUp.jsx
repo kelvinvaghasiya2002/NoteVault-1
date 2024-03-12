@@ -1,4 +1,4 @@
-// import './signup.css';
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 
@@ -9,6 +9,7 @@ export default function SignUp() {
         username : "",
         password : "" 
     });
+    const URL = "http://localhost:4000";
 
     function handleChange(event) {
         console.log(event.target.name);
@@ -25,9 +26,16 @@ export default function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        // useEffect(()=>{
-            
-        // })
+        try{
+            async function getdata(){
+                let response = await axios.get(URL+`/sign-up?email=${user.username}&password=${user.password}`); 
+                console.log(response)
+            }
+            getdata();
+        }
+        catch(err){
+            console.log(err);
+        }
 
         setUser({username : "" , password : ""});
     }

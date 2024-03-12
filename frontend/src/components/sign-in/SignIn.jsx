@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from "axios";
 import "./signin.css"
 
 
@@ -8,6 +9,7 @@ export default function SignIn() {
         username : "",
         password : "" 
     });
+    const URL = "http://localhost:4000";
 
     function handleChange(event) {
         console.log(event.target.name);
@@ -20,9 +22,20 @@ export default function SignIn() {
             }
         })
     }
+    
 
     function handleSubmit(e) {
         e.preventDefault();
+        async function getdata(){
+            try{
+                let response = await axios.get(URL+`/sign-in?email=${user.username}&password=${user.password}`);
+                console.log(response)
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+        getdata();
         setUser({username : "" , password : ""});
     }
 
