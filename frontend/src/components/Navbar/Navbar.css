@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  background-color: #202124;
+  background-color: #212121;
 }
 
 .Navigation {
   display: flex;
   color: #FFFFFFDE;
-  background-color: #202124;
+  background-color: #212121;
   height: 12vh;
   padding-left: 5%;
   align-items: center;
