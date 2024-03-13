@@ -1,12 +1,15 @@
 import Zoom from '@mui/material/Zoom';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "./compose.css"
 
 
 export default function Compose() {
     const [clicked, setClicked] = useState(false)
+
+    const composeRef = useRef();
+
     const [note, setNote] = useState({
         title : "",
         content : ""
@@ -34,9 +37,22 @@ export default function Compose() {
         })
     }
 
+    useEffect(()=>{
+        function handler(e) {
+            if(!composeRef.current.contains(e.target)){
+                setClicked(false);
+            }
+        }
+        document.addEventListener("mousedown",handler)
+
+        return ()=>{
+            document.removeEventListener("mousedown",handler)
+        }
+    })
+
     return (
-        <div>
-            <form className="create-note">
+        <div >
+            <form ref={composeRef} className="create-note">
                 {
                     clicked &&
                     <input

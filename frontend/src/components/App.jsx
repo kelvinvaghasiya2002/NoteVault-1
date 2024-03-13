@@ -8,30 +8,37 @@ import axios from "axios"
 export default function App() {
     const url = "http://localhost:4000"
     const token = localStorage.getItem("token");
-    console.log(token);
+    const { user, setUser, isLogged, setLogged } = useUserInfo();
+    // console.log(isLogged);
 
-    const userInfo = useUserInfo();
 
-    useEffect(()=>{
+    useEffect(() => {
         async function checkSignin() {
-            try{
+            try {
 
-                const response = await axios.get(url+`/api/auth?token=${token}`);
-                console.log(response);
+                const response = await axios.get(url + `/api/auth?token=${token}`);
+                // console.log(response.data)
+                setUser(response.data.token);
+                setLogged(response.data.login)
 
-            }catch(err){
+            } catch (err) {
                 console.log(err);
             }
         }
         checkSignin();
-    },[])
+    }, [])
 
 
     return (
         <div>
-            <Navbar/>
-            {/* <Note/> */}
-            <Compose />
+            <Navbar />
+            {
+                isLogged &&
+                <>
+                    <Compose />
+                    <Note/>
+                </>
+            }
         </div>
     )
 }

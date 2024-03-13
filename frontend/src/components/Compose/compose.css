@@ -1,11 +1,12 @@
 form.create-note {
     position: relative;
     width: 480px;
-    margin: 30px auto 20px auto;
+    margin: 30px auto 30px auto;
     background-color: #414141;
     padding: 15px;
     border-radius: 7px;
     /* box-shadow: 0 1px 5px rgb(138, 137, 137); */
+    box-shadow: black 0px 4px 6px -1px, black 0px 2px 4px -1px;
   }
   form.create-note input,
   form.create-note textarea {
