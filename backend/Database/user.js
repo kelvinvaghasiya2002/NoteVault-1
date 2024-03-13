@@ -1,6 +1,19 @@
 import mongoose, { Schema } from "mongoose"
 
 
+const noteSchema = new Schema({
+    id : {
+        type : 'UUID'
+    },
+    title : {
+        type : String
+    },
+    content : {
+        type : String
+    }
+})
+
+
 const userSchema = new Schema({
     id : {
         type : 'UUID'
@@ -10,6 +23,9 @@ const userSchema = new Schema({
     },
     password : {
         type : String
+    },
+    notes : {
+        type : [noteSchema]
     }
 })
 

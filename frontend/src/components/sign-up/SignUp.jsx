@@ -12,8 +12,9 @@ export default function SignUp() {
 
     function handleChange(event) {
         console.log(event.target.name);
-        const name = event.target.name;
-        const value = event.target.value;
+        // const name = event.target.name;
+        // const value = event.target.value;
+        const {name : name , value : value} = event.target
         setUser((prevValue)=>{
             return {
                 ...prevValue,

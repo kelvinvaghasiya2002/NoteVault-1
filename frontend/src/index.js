@@ -4,20 +4,21 @@ import App from './components/App';
 import { createBrowserRouter , RouterProvider } from "react-router-dom";
 import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp.jsx';
+import LoginProvider from './contexts/Login.jsx';
 
 
 const router = createBrowserRouter([
   {
     path:"/",
-    element : <App />
+    element : <LoginProvider > <App /> </LoginProvider>
   },
   {
     path:"/sign-in",
-    element : <SignIn />
+    element : <LoginProvider> <SignIn /> </LoginProvider>
   },
   {
     path : "/sign-up",
-    element : <SignUp />
+    element : <LoginProvider><SignUp /></LoginProvider>
   }
 ])
 

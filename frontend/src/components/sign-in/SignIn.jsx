@@ -4,26 +4,27 @@ import "./signin.css"
 
 export default function SignIn() {
 
-    const [user , setUser] = useState({
-        username : "",
-        password : "" 
+    const [user, setUser] = useState({
+        username: "",
+        password: ""
     });
 
     function handleChange(event) {
         console.log(event.target.name);
-        const name = event.target.name;
-        const value = event.target.value;
-        setUser((prevValue)=>{
+        // const name = event.target.name;
+        // const value = event.target.value;
+        const { name: name, value: value } = event.target;
+        setUser((prevValue) => {
             return {
                 ...prevValue,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        setUser({username : "" , password : ""});
+        setUser({ username: "", password: "" });
     }
 
 

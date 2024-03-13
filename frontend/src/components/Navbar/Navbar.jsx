@@ -5,7 +5,7 @@ export default function Navbar(){
     return(
         <div className='Navigation'>
             <div className='Titlename'>
-                <h1>NoteVault</h1>
+                <h1 style={{fontWeight : 700}}>NoteVault</h1>
             </div>
             
             <div className='mainlogin'>
