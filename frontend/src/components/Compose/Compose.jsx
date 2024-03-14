@@ -3,16 +3,21 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useEffect, useRef, useState } from 'react';
 import "./compose.css"
+import axios from 'axios';
+import { useUserInfo } from '../../contexts/Login';
 
 
 export default function Compose() {
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(false);
+    const { user, setUser, isLogged, setLogged } = useUserInfo();
+
+    const url = "http://localhost:4000"
 
     const composeRef = useRef();
 
     const [note, setNote] = useState({
-        title : "",
-        content : ""
+        title: "",
+        content: ""
     })
 
     function handleClick() {
@@ -20,33 +25,51 @@ export default function Compose() {
     }
 
     function handleChange(event) {
-        const {name : name , value : value} = event.target;
-        setNote((prevValue)=>{
+        const { name, value } = event.target;
+        setNote((prevValue) => {
             return {
                 ...prevValue,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        async function saveNote() {
+            try {
+                const response = await axios.post(url+`/save-notes/${user._id}?title=${note.title}&content=${note.content}`);
+                return response.data.result
+                
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        saveNote().then((data)=>{
+            setUser(data)
+        }).catch((err)=>{
+            console.log(err);
+        });
+
         setNote({
-            title : "",
-            content : ""
+            title: "",
+            content: ""
         })
+
+        setClicked(false)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         function handler(e) {
-            if(!composeRef.current.contains(e.target)){
+            if (!composeRef.current.contains(e.target)) {
                 setClicked(false);
             }
         }
-        document.addEventListener("mousedown",handler)
+        document.addEventListener("mousedown", handler)
 
-        return ()=>{
-            document.removeEventListener("mousedown",handler)
+        return () => {
+            document.removeEventListener("mousedown", handler)
         }
     })
 
@@ -60,7 +83,7 @@ export default function Compose() {
                         name="title"
                         placeholder="Title"
                         value={note.title}
-                        spellCheck = "false" />
+                        spellCheck="false" />
                 }
 
                 {clicked && <br />}
@@ -73,7 +96,7 @@ export default function Compose() {
                     rows={clicked ? "3" : "1"}
                     placeholder="Take a note . . ."
                     value={note.content}
-                    spellCheck = "false" />
+                    spellCheck="false" />
 
 
 

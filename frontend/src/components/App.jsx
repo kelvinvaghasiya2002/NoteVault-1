@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import { useUserInfo } from "../contexts/Login"
 import Compose from "./Compose/Compose"
 import Navbar from "./Navbar/Navbar"
@@ -9,7 +9,7 @@ export default function App() {
     const url = "http://localhost:4000"
     const token = localStorage.getItem("token");
     const { user, setUser, isLogged, setLogged } = useUserInfo();
-    // console.log(isLogged);
+    console.log("Hello");
 
 
     useEffect(() => {
@@ -33,11 +33,21 @@ export default function App() {
         <div>
             <Navbar />
             {
-                isLogged &&
+                isLogged ?
                 <>
                     <Compose />
-                    <Note/>
-                </>
+                    {user.notes ?.map((note)=>{
+                        return <Note 
+                        key={note._id} 
+                        userId = {user._id} 
+                        noteId = {note._id}  
+                        title={note.title} 
+                        content={note.content}
+                         />
+                    })} 
+                     {/* <Note /> */}
+                </> :
+                <h1>Hello World</h1>
             }
         </div>
     )

@@ -1,0 +1,284 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+}
+
+.yearmonth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    gap: 10px;
+}
+.month{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.month h2{
+    min-width: 10vw;
+    min-height: 1.5vw;
+    color: #0a0000;
+    padding: 0vw 0.5vw;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.yearmonth button{
+    font-size: 1.5vh;
+    min-width: 1vw;
+    min-height: 1.5vh;
+    color: black;
+    background-color: #fff;
+    border: none;
+    /* border-color: 0.7px #0a0000; */
+    /* margin-left: 0.2vw; */
+    cursor: pointer;
+}
+
+
+.container{
+    /* border: #E6E6E6 1px solid; */
+    margin-top: 1vw;
+    /* height: 100vh; */
+}
+/* .week{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    margin: 1vw 7vw 0 7vw;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    display: grid;
+    background-color: white;
+    grid-template-columns: repeat(7, 3fr);
+    align-items: center;
+} */
+
+.date{
+    min-width: 100%;
+    min-height: 78.5vh;
+    border: 1px solid #E6E6E6 ;
+    color: black;
+    background-color: white;
+
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: min(2.5vh) repeat(4,auto);
+}
+.day div{
+    margin-top: 2px;
+}
+@media (max-width:1800px) {
+    .date{
+        min-height: 85vh;
+    }
+}
+@media (max-width:1500px) {
+    .date{
+        min-height: 86vh;
+    }
+}
+@media (max-width:1200px) {
+    .date{
+        min-height: 85vh;
+    }
+}
+@media (max-width:1000px) {
+    .date{
+        min-height: 60vh;
+    }
+    .month h2{
+        margin-top: 3px;
+    }
+}
+@media (max-width:500px) {
+    .date{
+        min-height: 30vh;
+        border: none;
+        grid-template-rows: min(4vh) repeat(4,auto);
+    }
+    .date .day{
+        border: none;
+    }
+    .date .cal{
+        border: none;
+        justify-self: center;
+    }
+    .month h2{
+        margin-top: 0px;
+    }
+}
+
+.day{
+    text-align: center;
+    border: 1px solid #E6E6E6 ;
+}
+.cal{
+    /* background-color: yellow; */
+    border: 1px solid #E6E6E6 ;
+}
+.cal div{
+    color: black;
+    text-align: end;
+    /* margin-right: 5px; */
+}
+.cal .disabled{
+    color: gray;
+}
+.cal .today{
+    color: white !important;
+    background-color: red;
+    border-radius: 99%;
+    padding: 4px;
+}
+@media (max-width:500px) {
+    .cal .selectdate{
+        color: white !important;
+        background-color: black;
+        border-radius: 99%;
+        padding: 4px;
+    }
+}
+.submeeting{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8vw;
+    background-color: #D9FFD6;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    text-align: left;
+}
+.datebutton{
+    display: block !important;
+}
+@media (max-width:500px) {
+    .submeeting{
+        display: none;
+    }
+    .cal div{
+        padding-right: 0px;
+    }
+    .addnew button{
+        display: none !important;
+    }
+}
+.addnew{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+.addnew button{
+    color: black;
+    border: none;
+    background-color: white;
+    margin-bottom: auto;
+    display: none;
+}
+.dropnone{
+    display: none !important;
+}
+.cal:hover  .addnew button{
+    display: block;
+}
+.formobile{
+    display: none;
+}
+@media (max-width:500px) {
+    .formobile{
+        display: block;
+    }
+    .dropitem{
+        display: none;
+    }
+}
+.formobile{
+    color: black;
+}
+.dropitem{
+    background-color: yellow;
+
+}
+
+.schedule{
+    display: flex;
+    flex: row;
+    background-color: #F0F0F0;
+    border: 0.2vw solid white;
+    box-shadow: 0.5px 0.5px 2px 1px rgb(129, 125, 125);
+    border-radius: 8px;
+    margin-top: 1.2vw;
+    width: 32vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sch_left{
+    flex: 80%;
+   margin: 1vw;
+    color: #000;
+  }
+  .dt_time{
+    display: flex;
+    gap: 1.3vw;
+    margin-bottom: 0.8vw;
+  }
+  .dt_time p,.dt_time li{
+    color: #000;
+    font-weight: 600;
+  }
+  .sch_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 20%;
+    margin: 1vw;
+  }
+  .sch_right li.imp{
+    color: red;
+    margin-bottom: 0.5vw;
+  }
+  .sch_right li.status{
+    color: #34A853;
+    margin-bottom: 0.5vw;
+  }
+  .sch_right li.resch{
+    color: #FBB13C;
+    margin-bottom: 0.5vw;
+  }
+  @media (min-width:250px) and (max-width:500px){
+    .dt_time p,.dt_time li{
+        color: gray;
+        font-size: 2.9vw;
+        font-weight: 400;
+      }
+      .dt_time li{
+        margin-bottom: 0.5vw;
+      }
+    .schedule {
+        width: 92vw;
+        /* height: 30vw; */
+        margin-bottom: 1.5vw;
+    }
+    .sch_left h2{
+    font-size: 4.5vw;
+    margin-bottom: 2vw;
+    font-weight: 600;
+     }
+     .sch_left li{
+        font-size: 2.9vw;
+        margin-bottom: 0.5vw;
+      }
+      .sch_right{
+        font-size: 2.9vw;
+        justify-content: space-around;
+        margin-bottom: 6vw;
+      }
+      .sch_right ul{
+        text-align: left;
+        margin-left: 0.7vw;
+        font-weight: 500;
+    }
+  }

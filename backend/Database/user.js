@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose"
 
 const noteSchema = new Schema({
     id : {
-        type : 'UUID'
+        type : Schema.Types.UUID
     },
     title : {
         type : String
@@ -16,7 +16,7 @@ const noteSchema = new Schema({
 
 const userSchema = new Schema({
     id : {
-        type : 'UUID'
+        type : Schema.Types.UUID
     },
     email : {
         type : String
