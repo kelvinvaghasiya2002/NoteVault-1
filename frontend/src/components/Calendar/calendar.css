@@ -25,7 +25,7 @@
     margin-top: 5px;
 }
 .yearmonth button{
-    font-size: 1.5vh;
+    font-size: 4vh;
     min-width: 1vw;
     min-height: 1.5vh;
     color: black;
@@ -35,7 +35,11 @@
     /* margin-left: 0.2vw; */
     cursor: pointer;
 }
-
+@media (max-width:500px) {
+  .yearmonth button{
+    font-size: 2.5vh;
+  }
+}
 
 .container{
     /* border: #E6E6E6 1px solid; */
@@ -65,7 +69,7 @@
 
     display: grid;
     grid-template-columns: repeat(7, auto);
-    grid-template-rows: min(2.5vh) repeat(4,auto);
+    grid-template-rows: min(4vh) repeat(4,auto);
 }
 .day div{
     margin-top: 2px;
@@ -154,6 +158,13 @@
 .datebutton{
     display: block !important;
 }
+
+.addnew{
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-right: 10px;
+}
 @media (max-width:500px) {
     .submeeting{
         display: none;
@@ -164,12 +175,11 @@
     .addnew button{
         display: none !important;
     }
+    .addnew{
+      margin-right: 0px;
+    }
 }
-.addnew{
-    display: flex;
-    justify-content: end;
-    gap: 10px;
-}
+
 .addnew button{
     color: black;
     border: none;
@@ -281,4 +291,194 @@
         margin-left: 0.7vw;
         font-weight: 500;
     }
+  }
+
+
+
+
+
+
+
+
+  /* Note nu css */
+
+
+  .addItem{
+    display: flex;
+    width: 100%;
+  }
+
+
+  .Item{
+    display: flex;
+    gap : 30px;
+    color: aliceblue;
+    width: 100%;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .Item p{
+    color: aliceblue;
+  }
+
+  .ItemButton{
+    display: flex;
+    margin-left: auto;
+  }
+
+  .ItemButton svg {
+    /* height: 30px;
+    width: 50px; */
+    margin: auto 0;
+
+    /* background-color: #1A8917; */
+    color: white;
+    /* border: none; */
+    /* border-radius: 99px; */
+  }
+
+
+
+
+  /* .note {
+    background-color: #414141;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    height: 170px;
+    overflow: auto;
+    padding: 10px;
+    width: 170px;
+    margin: 16px;
+    float: left;
+  } */
+
+  /* .note h1 {
+    color: aliceblue;
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  } */
+
+  /* .note p {
+    font-size: 1.1em;
+    color: aliceblue;
+    font-weight: 300;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  } */
+
+
+
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* background: aliceblue; */
+    background: #414141;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #414141;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
+
+
+  .pop-up {
+    z-index: 4;
+    border-radius: 10px;
+    position: fixed;
+    width: 40%;
+    box-shadow: rgba(67, 63, 63, 0.35) 0px 5px 15px;
+    height: auto;
+    background-color: #414141;
+    right: 30%;
+    left: 30%;
+    top:20px;
+    padding: 10px 20px;
+    /* top: 13vh; */
+    display: flex;
+    justify-content: center;
+  }
+
+  /* .compose {
+    width: 100%;
+    
+}  */
+
+   .calendar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 1%;
+    /* font-family: "Noto Serif", serif; */
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @media (max-width:500px) {
+    .calendar-form {
+      width: 85%;
+    }
+  }
+
+  .createArea {
+    color: aliceblue;
+    border: none;
+    outline: none;
+    width: 100%
+  }
+
+  .createArea::placeholder {
+    color: #B3B3B1;
+  }
+
+  .calendar-form input {
+    height: 40px;
+    font-size: 20px;
+    background-color: #414141;
+  }
+
+  /* .calendar-form input:focus {
+    color: #000000D6;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+} */
+
+
+  /* .calendar-form textarea {
+    color: aliceblue;
+    font-size: 16px;
+    text-decoration: none;
+    background-color: #414141;
+    resize: none;
+  } */
+
+  .inactive {
+    display: none;
+  }
+
+
+  .addItem button{
+    border-radius: 99999px;
+    background-color: #1A8917;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 22px;
+    border: none;
+    height: 35px;
+    width: 40px;
+    margin: auto 0;
   }

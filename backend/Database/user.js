@@ -14,6 +14,19 @@ const noteSchema = new Schema({
 })
 
 
+const todoSchema = new Schema({
+    id : {
+        type : Schema.Types.UUID
+    },
+    items : {
+        type : [String]
+    },
+    date : {
+        type : String
+    }
+})
+
+
 const userSchema = new Schema({
     id : {
         type : Schema.Types.UUID
@@ -26,6 +39,9 @@ const userSchema = new Schema({
     },
     notes : {
         type : [noteSchema]
+    },
+    todo : {
+        type : [todoSchema]
     }
 })
 

@@ -96,7 +96,7 @@ export default function Note({ title, content, userId, noteId}) {
     return (
         <>
 
-            <div ref={popRef}  className={`pop-up ${ popNote ? 'active' : 'inactive'}`} >
+            <div ref={popRef}  className={`note-pop-up ${ popNote ? 'active' : 'inactive'}`} >
                 <form className="compose-form">
                     <input
                         className="createArea"

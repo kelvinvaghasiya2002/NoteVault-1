@@ -9,7 +9,7 @@ export default function App() {
     const url = "http://localhost:4000"
     const token = localStorage.getItem("token");
     const { user, setUser, isLogged, setLogged } = useUserInfo();
-    console.log("Hello");
+    console.log(user);
 
 
     useEffect(() => {

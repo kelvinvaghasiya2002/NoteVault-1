@@ -52,7 +52,7 @@
 
 
 
-  .pop-up {
+  .note-pop-up {
     z-index: 4;
     border-radius: 10px;
     position: fixed;
@@ -62,6 +62,7 @@
     background-color: #414141;
     right: 20%;
     left: 20%;
+    /* top:20px; */
     /* top: 13vh; */
     display: flex;
     justify-content: center;

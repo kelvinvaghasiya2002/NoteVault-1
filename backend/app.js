@@ -195,6 +195,35 @@ app.delete("/delete", (req, res) => {
 
 
 
+
+app.get("/edit-todo",(req,res)=>{
+    // console.log(req.query);
+    User.findOne({_id : req.query.id}).then((result)=>{
+        console.log(result);
+        let flag=true;
+        result.todo.forEach(element => {
+            if(element.date == req.query.date){
+                element.items.push(req.query.item);
+                flag=false;
+            }
+        });
+        if(flag){
+            const newId = uuidv4();
+            const todo = {
+                id : newId ,
+                items : [req.query.item],
+                date : req.query.date
+            }
+            result.todo.push(todo);
+        }
+        result.save();
+
+        res.json({
+            result : result
+        })
+    })
+});
+
 app.listen(4000, () => {
     console.log("server is running on 4000");
 })
