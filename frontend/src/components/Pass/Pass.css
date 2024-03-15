@@ -1,0 +1,145 @@
+.note {
+    background-color: #414141;
+    border-radius: 7px;
+    /* box-shadow: 0 2px 5px #ccc; */
+    height: 170px;
+    overflow: auto;
+    padding: 10px;
+    width: 170px;
+    margin: 16px;
+    float: left;
+  }
+
+  .note h1 {
+    color: aliceblue;
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+
+  .note p {
+    font-size: 1.1em;
+    color: aliceblue;
+    font-weight: 300;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+
+
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* background: aliceblue; */
+    background: #414141;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #414141;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
+
+
+  .note-pop-up {
+    z-index: 4;
+    border-radius: 10px;
+    position: fixed;
+    width: 60%;
+    box-shadow: rgba(67, 63, 63, 0.35) 0px 5px 15px;
+    height: auto;
+    background-color: #414141;
+    right: 20%;
+    left: 20%;
+    /* top:20px; */
+    /* top: 13vh; */
+    display: flex;
+    justify-content: center;
+  }
+
+  /* .compose {
+    width: 100%;
+    
+} */
+
+  .compose-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 1%;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @media (max-width:500px) {
+    .compose-form {
+      width: 85%;
+    }
+  }
+
+  .createArea {
+    color: aliceblue;
+    border: none;
+    outline: none;
+    width: 100%
+  }
+
+  .createArea::placeholder {
+    color: #B3B3B1;
+  }
+
+  .compose-form input {
+    height: 40px;
+    font-size: 22px;
+    background-color: #414141;
+  }
+
+  /* .compose-form input:focus {
+    color: #000000D6;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+} */
+
+
+  .compose-form textarea {
+    color: aliceblue;
+    font-size: 16px;
+    text-decoration: none;
+    background-color: #414141;
+    resize: none;
+  }
+
+
+  .buttons {
+    display: flex;
+    gap: 5px;
+  }
+
+  .buttons button {
+    background-color: #1A8917;
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    border: none;
+    border-radius: 99px;
+    height: 25px;
+    width: 65px;
+  }
+
+  .inactive {
+    display: none;
+  }

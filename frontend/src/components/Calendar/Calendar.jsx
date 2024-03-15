@@ -1,12 +1,13 @@
 
 import axios from "axios";
 import "./calendar.css";
+import dabbo from "../../assests/dabbo.png"
 import { format, addMonths, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, isSameDay } from 'date-fns';
 import { useState, useEffect, useRef } from 'react';
 import { useUserInfo } from "../../contexts/Login";
 import DeleteIcon from '@mui/icons-material/Delete';
 // import { responsiveFontSizes } from "@mui/material";
-
+import Navbar from "../Navbar/Navbar";
 export default function Calendar() {
   const token = localStorage.getItem("token");
   const popRef = useRef();
@@ -170,28 +171,42 @@ export default function Calendar() {
   // console.log(d+" "+m+" "+" "+y+" MNIN"+obj[m])
   const itemdate = d + "-" + obj[m] + "-" + y;
 
-  const poptodo =()=>{
-    let tododata=[]
+  const poptodo = () => {
+    let tododata = []
+    let index = 0;
     user.todo?.map((item => {
-              
+
       if (item.date == itemdate) {
-        
+
         item.items.map((list) => {
           console.log(list);
           // return (
-            // <>
-            let index=0;
-            tododata.push(
-              <div className="Item" >
-                <input type="checkbox" />
-                <p>{list}</p>
-                <div className="ItemButton" id={index} onClick={(event)=>{
-                  console.log(event.target);
-                }}><DeleteIcon /></div>
-              </div>
-            );
-              index++;
-            {/* </> */}
+          // <>
+
+          tododata.push(
+            <div className="Item" >
+              <input type="checkbox" />
+              <p>{list}</p>
+              <button className="ItemButton" >
+              <img id={index} onClick={async (event) => {
+                event.preventDefault();
+                console.log(event.target.id);
+                console.log(itemdate);
+                try {
+                  const response = await axios.delete(url +`/deletetodo?id=${user._id}&index=${event.target.id}&date=${itemdate}`)
+                  console.log(response.data.result);
+                  setUser(response.data.result);
+                } catch (err) {
+                  console.log(err)
+                }
+
+              }} width="20px" height="20px"  src={dabbo}/>
+              </button>
+
+            </div>
+          );
+          index += 1;
+          {/* </> */ }
           // )
         })
       }
@@ -203,9 +218,10 @@ export default function Calendar() {
 
   return (
     <main className="main">
+    <Navbar/>
       <div>
 
-
+    
         {renderHeader()}
 
 
@@ -227,7 +243,46 @@ export default function Calendar() {
         </div>
       </div>
       <div className='formobile'>
-        <h1>last part</h1>
+        {/* <h1>last part</h1> */}
+        <form className="calendar-form">
+
+          <div className="addItem">
+            <input
+              className="createArea"
+              name="title"
+              value={item}
+              onChange={(e) => {
+                setItem(e.target.value)
+                console.log(item)
+              }}
+              placeholder="Add Item"
+              spellCheck="false"
+            />
+
+
+            <button onClick={async (e) => {
+              e.preventDefault();
+              // console.log(item);
+
+              console.log(itemdate)
+              try {
+                const response = await axios.get(url + `/edit-todo?id=${user._id}&item=${item}&date=${itemdate}`)
+                console.log(response.data.result);
+                setUser(response.data.result);
+              } catch (err) {
+                console.log(err)
+              }
+              setItem("")
+
+            }} >+</button>
+
+          </div>
+
+          {
+            poptodo()
+          }
+
+        </form>
       </div>
 
 

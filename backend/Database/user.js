@@ -42,7 +42,11 @@ const userSchema = new Schema({
     },
     todo : {
         type : [todoSchema]
+    },
+    pass : {
+        type : [noteSchema]
     }
+
 })
 
 

@@ -6,6 +6,7 @@ import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp.jsx';
 import LoginProvider from './contexts/Login.jsx';
 import Calendar from './components/Calendar/Calendar.jsx';
+import Passcom from './components/Passcom/Passcom.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/to-do",
     element : <LoginProvider> <Calendar /> </LoginProvider>
+  },
+  {
+    path:"/passwords",
+    element : <LoginProvider><Passcom /></LoginProvider>
   }
 ])
 

@@ -4,7 +4,8 @@ import Compose from "./Compose/Compose"
 import Navbar from "./Navbar/Navbar"
 import Note from "./Note/Note"
 import axios from "axios"
-
+import Pass from "./Pass/Pass"
+import Passcom from "./Passcom/Passcom"
 export default function App() {
     const url = "http://localhost:4000"
     const token = localStorage.getItem("token");

@@ -150,6 +150,24 @@ app.post("/save-notes/:id", (req, res) => {
         console.log(err);
     })
 })
+// save for pass
+app.post("/save-pass/:id", (req, res) => {
+    User.findOne({ _id: req.params.id }).then((result) => {
+        const newId = uuidv4();
+        const passnote = {
+            id : newId,
+            title: req.query.title,
+            content: req.query.content
+        }
+        result.pass.push(passnote);
+        result.save();
+        res.json({
+            result: result
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+})
 
 
 
@@ -174,7 +192,27 @@ app.patch("/edit-note", (req, res) => {
     
 })
 
+// edit pass
+app.patch("/edit-pass", (req, res) => {
+    // console.log(req.query);
+    User.findOne({ _id: req.query.userid }).then((result) => {
 
+        result.pass.forEach((note) => {
+            if (note._id == req.query.noteid) {
+                note.title = req.query.title;
+                note.content = req.query.content;
+            }
+        });
+        result.save();
+
+        res.json({
+            result: result
+        })
+    }).catch((err)=>{
+        console.log(err);
+    })
+    
+})
 
 
 app.delete("/delete", (req, res) => {
@@ -193,7 +231,22 @@ app.delete("/delete", (req, res) => {
     });
 });
 
-
+// delete pass
+app.delete("/pass-delete", (req, res) => {
+    const userid = req.query.userid
+    const noteid = req.query.noteid;
+    User.findOne({ _id: userid }).then((result) => {
+        result.pass = result.pass.filter((note)=>{
+            return note._id != noteid;
+        })
+        result.save();
+        res.json({
+            result: result
+        })
+    }).catch((error) => {
+        console.log(error); // Failure
+    });
+});
 
 
 app.get("/edit-todo",(req,res)=>{
@@ -223,6 +276,33 @@ app.get("/edit-todo",(req,res)=>{
         })
     })
 });
+
+
+
+
+app.delete("/deletetodo",(req,res)=>{
+    const userid=req.query.id;
+    const date=req.query.date;
+    const index=req.query.index;
+   console.log(index);
+    User.findOne({_id:userid}).then((result)=>{
+        // console.log("Hello");
+        result.todo.map((item)=>{
+            if(item.date==date){
+                item.items=item.items.filter((value,index1)=>{
+                    return index1!=index;
+                })
+            }
+        })
+        result.save();
+        res.json({
+            result : result
+        })
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
+
 
 app.listen(4000, () => {
     console.log("server is running on 4000");
