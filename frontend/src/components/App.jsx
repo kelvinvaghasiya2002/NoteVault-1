@@ -48,7 +48,7 @@ export default function App() {
                     })} 
                      {/* <Note /> */}
                 </> :
-                <h1>Hello World</h1>
+                null
             }
         </div>
     )
